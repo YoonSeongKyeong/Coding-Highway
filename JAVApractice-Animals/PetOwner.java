@@ -1,5 +1,8 @@
+
 public class PetOwner {
-    public void giveMeal(Animal pet) {
+
+	public void givemeal(Animal pet) {
+        System.out.println("(PetOwner Gave meal)");
         pet.eat();
-    }
+	}
 }

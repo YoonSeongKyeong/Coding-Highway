@@ -32,14 +32,14 @@ public class Animal {
         picture=pictAdress;
     }
     public void makeNoise() {
-        System.out.println("AAA~AAAA!");
+        System.out.println("(Animal noise)AAA~AAAA!");
     } 
     public void eat() {// we can check if meal is what this animal would eat
         hunger=0;
-        System.out.println("MMMMMM~~!");
+        System.out.println("(Animal eat)MMMMMM~~!");
     }
     public void sleep() {
-        System.out.println("zzzZZZZZ");
+        System.out.println("(Animal sleep)zzzZZZZZ");
     }
     public void roam() {
     //     Random generator = new Random(); Not now - inheritance issue
@@ -60,7 +60,7 @@ public class Animal {
     //         }
     //     }
     //     System.out.println("go to "+location[0]+", "+location[1]);
-        System.out.println("default Moving");
+        System.out.println("(Animal roam)default Moving");
     }
     
 }

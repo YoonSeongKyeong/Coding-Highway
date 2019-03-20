@@ -1,5 +1,5 @@
 public class Launcher {
-    public static void main(string [] args) {
+    public static void main(String[] args) {
         Animal [] animals = new Animal[7];
         animals[0] = new Animal();
         animals[1] = new Cat();
@@ -17,6 +17,7 @@ public class Launcher {
             animalElement.sleep();
             owner.givemeal(animalElement);
             hunter.giveShot(animalElement);
+            System.out.println("---------------------------------");
         }
     }
 }
