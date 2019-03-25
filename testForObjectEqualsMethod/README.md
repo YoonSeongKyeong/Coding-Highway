@@ -1,4 +1,5 @@
-# This page is testing **OBJECT.getClass( obj ) & OBJECT.equals( obj )**
+# This page is testing **OBJECT.getClass( obj )
+# & OBJECT.equals( obj )**
 
 ![0](0th.png)
 
