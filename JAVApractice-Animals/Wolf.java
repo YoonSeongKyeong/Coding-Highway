@@ -6,4 +6,7 @@ public class Wolf extends Canine {
         hunger=0;
         System.out.println("(Wolf eat)ooommmmmmMM");
     }
+    public void sleep() {
+        System.out.println("(Wolf sleep) ZZZZZZzzzzzzz");
+    }
 }

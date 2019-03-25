@@ -1,6 +1,4 @@
-import java.util.*;
-
-public class Animal {
+public abstract class Animal {
     private String picture;//save picture address
     private String food;//what it eats
     protected int hunger;//how hungry it is
@@ -34,33 +32,8 @@ public class Animal {
     public void makeNoise() {
         System.out.println("(Animal noise)AAA~AAAA!");
     } 
-    public void eat() {// we can check if meal is what this animal would eat
-        hunger=0;
-        System.out.println("(Animal eat)MMMMMM~~!");
-    }
-    public void sleep() {
-        System.out.println("(Animal sleep)zzzZZZZZ");
-    }
-    public void roam() {
-    //     Random generator = new Random(); Not now - inheritance issue
-    //     int xMove;
-    //     int yMove;
-    //     int nextX;
-    //     int nextY;
-    //     boolean inBound=false;
-    //     while (!inBound) {
-    //         xMove=generator.nextInt(11)-5;//-5~5
-    //         yMove=generator.nextInt(11)-5;//-5~5
-    //         nextX=location[0]+xMove;
-    //         nextY=location[1]+yMove;
-    //         if (nextX>=0&&nextX<=boundaries[0]&&nextY>=0&&nextY<=boundaries[1]) {
-    //             inBound=true;
-    //             location[0] = nextX;
-    //             location[1] = nextY;
-    //         }
-    //     }
-    //     System.out.println("go to "+location[0]+", "+location[1]);
-        System.out.println("(Animal roam)default Moving");
-    }
+    public abstract void eat();
+    public abstract void sleep();
+    public abstract void roam();
     
 }

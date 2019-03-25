@@ -6,4 +6,7 @@ public class Cat extends Feline {
         hunger=0;
         System.out.println("(Cat eat)MMmm");
     }
+    public void sleep() {
+        System.out.println("(Cat sleep) zzzzzzz");
+    }
 }

@@ -1,7 +1,7 @@
 public class Launcher {
     public static void main(String[] args) {
         Animal [] animals = new Animal[7];
-        animals[0] = new Animal();
+        animals[0] = new Cat();
         animals[1] = new Cat();
         animals[2] = new Lion();
         animals[3] = new Dog();

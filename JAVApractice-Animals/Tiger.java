@@ -6,4 +6,7 @@ public class Tiger extends Feline {
         hunger=0;
         System.out.println("(Tiger eat)ttmttttt");
     }
+    public void sleep() {
+        System.out.println("(Tiger sleep) ZZZZZZZZzzzzzzzzz");
+    }
 }

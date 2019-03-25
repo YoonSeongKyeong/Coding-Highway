@@ -6,4 +6,7 @@ public class Lion extends Feline {
         hunger=0;
         System.out.println("(Lion eat)GGRRGGG");
     }
+    public void sleep() {
+        System.out.println("(Lion sleep) zsszZZZzzzzzz");
+    }
 }

@@ -6,4 +6,10 @@ public class Hippo extends Animal {
         hunger=0;
         System.out.println("(Hippo eat)MBBMBFRRRM");
     }
+    public void sleep() {
+        System.out.println("(Hippo sleep) ZZZZzzzzzzz");
+    }
+    public void roam() {
+        System.out.println("(Hippo roam)  aaoaoaooaaa");
+    }
 }

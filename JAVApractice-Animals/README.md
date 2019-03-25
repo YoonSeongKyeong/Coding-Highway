@@ -1,7 +1,7 @@
 # This is about Animal demo
 
 
-# Animal
+# Animal #Abstract
     instance variables
         - picture
         - food
@@ -18,7 +18,7 @@
         - Hippo
         - Canine
 
-## Feline
+## Feline #Abstract
     methods
        - roam()  
     subclass
@@ -41,7 +41,7 @@
     methods
         - makeNoise() 
         - eat()
-## Canine
+## Canine #Abstract
     methods
         - roam()  
     subclass
