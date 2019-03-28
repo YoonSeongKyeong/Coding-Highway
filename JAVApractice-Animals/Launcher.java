@@ -24,5 +24,21 @@ public class Launcher {
         System.out.println("Set Food as My new Food!");
         animals[0].setFood("My new Food!");
         System.out.println(animals[0].getFood());
+        System.out.println("---------------------------------");
+        System.out.println("This is Test for Pet method");
+        Pet[] petRef = new Pet[3];
+        petRef[0] = new Cat();
+        petRef[1] = new Dog();
+        petRef[2] = new RoboDog();
+        for(Pet petEle : petRef) {
+            petEle.befriendly();
+            petEle.play();
+        }
+        System.out.println("This is Test for Robot method");
+        RoboDog roboDog = new RoboDog();
+        roboDog.turnOn();
+        roboDog.befriendly();
+        roboDog.play();
+        roboDog.turnOff();
     }
 }

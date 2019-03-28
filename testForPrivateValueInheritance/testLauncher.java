@@ -73,5 +73,8 @@ public class testLauncher {
         // kid1.money=1;
         // out1 = kid1.money;
         // System.out.println(out1);
+
+        System.out.println("Here is Test About private method on Parent --- Accessing");
+        kid1.makeNoise();
     }
 }
