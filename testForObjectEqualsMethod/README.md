@@ -22,3 +22,11 @@
 
 # **All the answer is in the console result** 
 ## Have Fun with finding **new interesting fact with object getclass( ) and equal( ) method yourself!!!**
+
+## *below is the Conclusion. please try yourself to guess the Answer to the question*
+
+## A1 : even if the reference type is Doctor, the getClass have the **Same type with Instance** ( *I guess object have some Instance variable describing the Class and when Instance pop out, constructor being called, constructor sets the variable as name of Class  -- just my guess* )
+
+## A2 : the Object.equals( someObj ) can **identify the difference between Instances in Same Class!!!** (*maybe this is because of hashing to identify the instance -- just my guess*)
+
+## A3: the Object.equals( someObj ) can **Even identify the equalness when another reference(can be different type) is referencing the same instance!! How smart!** (*maybe this is because of hashing to identify the instance -- just my guess*)
