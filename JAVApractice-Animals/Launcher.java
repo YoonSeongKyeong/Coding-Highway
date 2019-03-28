@@ -19,5 +19,10 @@ public class Launcher {
             hunter.giveShot(animalElement);
             System.out.println("---------------------------------");
         }
+        System.out.println("New Test for Getting and Setting Food");
+        System.out.println(animals[0].getFood());
+        System.out.println("Set Food as My new Food!");
+        animals[0].setFood("My new Food!");
+        System.out.println(animals[0].getFood());
     }
 }

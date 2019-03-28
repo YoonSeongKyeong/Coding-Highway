@@ -6,7 +6,7 @@ public abstract class Animal {
     private int[] location;//location now positioning {x, y}
     Animal(){
         picture = "";
-        food = "all";
+        food = "Default Food";
         hunger = 0;
         boundaries = new int[2];
         location = new int[2];
@@ -17,7 +17,7 @@ public abstract class Animal {
     }
     Animal(int boundaryX, int boundaryY, int locationX, int locationY) {
         picture = "";
-        food = "all";
+        food = "Default Food";
         hunger = 0;
         boundaries = new int[2];
         location = new int[2];
@@ -25,6 +25,12 @@ public abstract class Animal {
         boundaries[1] = boundaryY;
         location[0] = locationX;
         location[0] = locationY;
+    }
+    public void setFood(String foodIn) {
+        food = foodIn;
+    }
+    public String getFood() {
+        return food;
     }
     public void setPicture(String pictAdress) {
         picture=pictAdress;
