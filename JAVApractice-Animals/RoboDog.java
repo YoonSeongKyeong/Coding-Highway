@@ -15,4 +15,8 @@ public class RoboDog extends Robot implements Pet {
     public void play() {
         System.out.println("(RoboDog) Play with owner");
     }
+    @Override
+    public void eat() {
+        System.out.println("(RoboDog) Charging!!!! ----- POWER!!");
+    }
 }

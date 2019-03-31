@@ -1,4 +1,12 @@
 import java.util.ArrayList; // import the ArrayList class
+//메인함수 순서 설명
+//1. 각자의 서브클래스 instance들을 Animal Array에 담아서 한번에 컨트롤(polymorphism)
+//2. 그중에 Pet만 가능한 메소드는 Pet인지 확인하고 Pet으로 Casting해서 실행
+//3. 서브클래스에서 슈퍼클래스의 private 변수와 메소드에 간접적으로 접근 가능한 것을 확인
+//4. Animal Array에서 Pet만 따로 뽑아내고 싶을 때 사용하는 메소드 소개(extraction)
+//5. RoboDog 소개와 Pet list에 추가
+//6. Pet list에 담아서 Pet의 서브클래스들을 한번에 컨트롤(polymorphism again)
+
 
 public class Launcher {
     public static void main(String[] args) {
@@ -20,7 +28,9 @@ public class Launcher {
             animalElement.roam();
             animalElement.makeNoise(); 
             animalElement.sleep();
-            owner.givemeal(animalElement);
+            if(animalElement instanceof Pet) { // 1-st Type Casting
+                owner.givemeal((Pet)animalElement);//Petowner only give meal to Pet class
+            }
             treater.giveShot(animalElement);
             System.out.println("---------------------------------");
         }
@@ -47,19 +57,43 @@ public class Launcher {
         System.out.println("---------------------------------");
 
         System.out.println("This is Test for Pet method");
-        Pet[] petRef = new Pet[3];
-        petRef[0] = new Cat();
-        petRef[1] = new Dog();
-        petRef[2] = new RoboDog();
-        for(Pet petEle : petRef) {
+        System.out.println("OH NO I Can't use animal as Pet.. :(");
+        System.out.println("");
+        System.out.println("But I have some Idea!!!");
+        System.out.println("This idea is reverse of polymorphism");
+        System.out.println("any-subclass -> superclass(polymorphism) <=> superclass -> each-subclass (My return method)");
+        ArrayList<Pet> petList = new ArrayList<Pet>();
+        for(Animal animalElement : animals) {
+            if(animalElement instanceof Pet) {
+                petList.add( (Pet)animalElement  );
+            }
+        }
+
+        System.out.println("This is Test for Robot method");//RoboDog Test   
+        RoboDog roboDog = new RoboDog();//Robodog First To add to PetList
+        System.out.println("I'm RoboDog, I can do the Robot-Things (TurnOn TurnOff)");
+        roboDog.turnOn();
+        roboDog.turnOff();
+        System.out.println("I can Also do the Pet-Things (play beFriendly)");
+        roboDog.play();
+        roboDog.befriendly();
+       petList.add(roboDog);
+
+        //after this we have list consists only pet element!!! back from complex animals!!!
+        System.out.println("after this we have list consists only pet element!!! back from complex animals!!!");
+        System.out.println("You can check this type is in Pet (Dog, Cat, RoboDog)");
+        System.out.println("When you have to extract specific subclass from the list of Superclass, Use This Method");
+        System.out.println("");
+        for(Pet petEle : petList) {
+            System.out.println("I am implementing the Pet Interface!, and my class is");
+            System.out.println(petEle.getClass());
+            System.out.println("is in Pet (Dog, Cat, RoboDog)");
+            System.out.println("And I surely able to use Pet method");
             petEle.befriendly();
             petEle.play();
-        }
-        System.out.println("This is Test for Robot method");
-        RoboDog roboDog = new RoboDog();
-        roboDog.turnOn();
-        roboDog.befriendly();
-        roboDog.play();
-        roboDog.turnOff();
+            owner.givemeal(petEle);
+            System.out.println("---------------------------------");
+        }     
     }
 }
+

@@ -1,5 +1,5 @@
 public class PetOwner {
-	public void givemeal(Animal pet) {
+	public void givemeal(Pet pet) {
         System.out.println("(PetOwner Gave meal)");
         pet.eat();
 	}
