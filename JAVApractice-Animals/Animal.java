@@ -20,7 +20,7 @@ public abstract class Animal {
         location[0] = locationY;
     }
     private void dance() {//this is private method
-        System.out.println("It's Dance time!!!");
+        System.out.println("It's Dance time!!!(and It is private method)");
     }
     public void setFood(String foodIn) {//access to private instance value
         food = foodIn;
