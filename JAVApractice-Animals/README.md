@@ -29,18 +29,25 @@
     methods
         - makeNoise()
         - eat()
+        - sleep() 
 ### Tiger
     methods
         - makeNoise()
         - eat()
+        - sleep() 
 ### Cat
     methods
         - makeNoise()
         - eat()
+        - sleep() 
+        - befriendly()
+        - play()
 ## Hippo
     methods
         - makeNoise() 
         - eat()
+        - sleep() 
+        - roam()
 ## Canine #Abstract
     methods
         - roam()  
@@ -51,10 +58,14 @@
     methods
         - makeNoise()
         - eat()
+        - sleep() 
 ### Dog
     methods
         - makeNoise()
         - eat()
+        - sleep() 
+        - befriendly()
+        - play()
                 
 # Vet
     methods
@@ -62,3 +73,23 @@
 # PetOwner
     methods
         - give meal()
+# ROBOT #Abstract
+    methods
+        - turnOn()
+        - turnOff()
+    subclass
+        - RoboDog
+### RoboDog
+    methods
+        - turnOn()
+        - turnOff()
+        - befriendly()
+        - play()
+# Pet #Interface
+    methods
+        - befriendly()
+        - play()
+    subclass
+        - Cat
+        - Dog
+        - RoboDog

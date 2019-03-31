@@ -1,44 +1,41 @@
 public abstract class Animal {
-    private String picture;//save picture address
-    private String food;//what it eats
+    private String picture;//save picture address && this is private instance value
+    private String food;//food for animal && this is private instance value
     protected int hunger;//how hungry it is
-    private int[] boundaries;//boundary for roaming {0~x, 0~y}
     private int[] location;//location now positioning {x, y}
-    Animal(){
+    Animal() {//when make instance with no argument
         picture = "";
         food = "Default Food";
         hunger = 0;
-        boundaries = new int[2];
         location = new int[2];
-        boundaries[0] = 0;
-        boundaries[1] = 0;
         location[0] = 0;
         location[0] = 0;
     }
-    Animal(int boundaryX, int boundaryY, int locationX, int locationY) {
+    Animal(int locationX, int locationY) {//when describe location of instance while building
         picture = "";
         food = "Default Food";
         hunger = 0;
-        boundaries = new int[2];
         location = new int[2];
-        boundaries[0] = boundaryX;
-        boundaries[1] = boundaryY;
         location[0] = locationX;
         location[0] = locationY;
     }
-    public void setFood(String foodIn) {
+    private void dance() {//this is private method
+        System.out.println("It's Dance time!!!");
+    }
+    public void setFood(String foodIn) {//access to private instance value
         food = foodIn;
     }
-    public String getFood() {
+    public String getFood() {//access to private instance value
         return food;
     }
-    public void setPicture(String pictAdress) {
+    public void setPicture(String pictAdress) {//access to private instance value
         picture=pictAdress;
     }
-    public void makeNoise() {
-        System.out.println("(Animal noise)AAA~AAAA!");
-    } 
-    public abstract void eat();
+    public void danceTime() {//access to private method
+        dance();
+    }
+    public abstract void makeNoise();
+    public abstract void eat();//abstract == no implementing in this level (exist only method head for control)
     public abstract void sleep();
     public abstract void roam();
     
