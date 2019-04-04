@@ -1,3 +1,5 @@
+package javapractice_animals;
+
 public class Tiger extends Feline {
     @Override
     public void makeNoise() {

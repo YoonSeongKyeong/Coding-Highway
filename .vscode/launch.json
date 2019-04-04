@@ -4,6 +4,20 @@
             "type": "java",
             "name": "CodeLens (Launch) - Launcher",
             "request": "launch",
+            "mainClass": "javapractice_helloworld.Launcher",
+            "projectName": "Coding-Highway_800a2e27"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Launcher",
+            "request": "launch",
+            "mainClass": "javapractice_animals.Launcher",
+            "projectName": "Coding-Highway_800a2e27"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Launcher",
+            "request": "launch",
             "mainClass": "Launcher"
         }
     ]

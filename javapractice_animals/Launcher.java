@@ -1,3 +1,5 @@
+package javapractice_animals;
+
 import java.util.ArrayList; // import the ArrayList class
 //메인함수 순서 설명
 //1. 각자의 서브클래스 instance들을 Animal Array에 담아서 한번에 컨트롤(polymorphism)

@@ -1,3 +1,5 @@
+package testForPrivateValueInheritance;
+
 public class testLauncher {
     public static void main(String[] args) {
         child kid1 = new child();

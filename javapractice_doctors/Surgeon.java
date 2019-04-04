@@ -1,3 +1,5 @@
+package javapractice_doctors;
+
 public class Surgeon extends Doctor {
 	public void makeIncision(){
 		System.out.print("makeIncision"+"\n");

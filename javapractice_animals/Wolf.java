@@ -1,3 +1,5 @@
+package javapractice_animals;
+
 public class Wolf extends Canine {
     @Override
     public void makeNoise() {

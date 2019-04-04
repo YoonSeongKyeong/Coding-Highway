@@ -1,3 +1,5 @@
+package javapractice_animals;
+
 public abstract class Animal {
     private String picture;//save picture address && this is private instance value
     private String food;//food for animal && this is private instance value

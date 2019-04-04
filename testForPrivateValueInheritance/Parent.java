@@ -1,3 +1,5 @@
+package testForPrivateValueInheritance;
+
 public class Parent {
     private int money;
     private int honey;

@@ -1,3 +1,5 @@
+package javapractice_animals;
+
 public class RoboDog extends Robot implements Pet {
     @Override
     public void turnOn() {

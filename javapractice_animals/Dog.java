@@ -1,3 +1,5 @@
+package javapractice_animals;
+
 public class Dog extends Canine implements Pet {
     @Override
     public void makeNoise() {

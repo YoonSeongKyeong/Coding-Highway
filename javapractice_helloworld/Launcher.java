@@ -1,3 +1,5 @@
+package javapractice_helloworld;
+
 import javax.swing.*;
 
 public class Launcher {
