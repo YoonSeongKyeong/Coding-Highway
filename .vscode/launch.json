@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - ButtonEventText",
+            "request": "launch",
+            "mainClass": "javapractice_helloworld.ButtonEventText",
+            "projectName": "Coding-Highway_800a2e27"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - Launcher",
             "request": "launch",
             "mainClass": "javapractice_helloworld.Launcher",
