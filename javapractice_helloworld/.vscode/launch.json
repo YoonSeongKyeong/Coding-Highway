@@ -2,6 +2,12 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - ButtonGame",
+            "request": "launch",
+            "mainClass": "javapractice_helloworld.ButtonGame"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - ButtonEventText",
             "request": "launch",
             "mainClass": "javapractice_helloworld.ButtonEventText"
