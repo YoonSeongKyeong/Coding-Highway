@@ -2,6 +2,12 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - ButtonEventText",
+            "request": "launch",
+            "mainClass": "javapractice_helloworld.ButtonEventText"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - Launcher",
             "request": "launch",
             "mainClass": "Launcher"

@@ -7,6 +7,7 @@ import java.awt.Color;
 import java.awt.Frame;
 import java.awt.event.*;
 import java.util.Random;
+import javax.swing.Timer;
 
 public class ButtonEventText implements ActionListener{ 
     private static String leftLabel = "Number of button clicks : ";
@@ -14,11 +15,13 @@ public class ButtonEventText implements ActionListener{
     private int buttonLocationX;
     private int buttonLocationY;
     private JLabel label = new JLabel(leftLabel + "0  ");
+    private Timer timer;
 
     Color[] labelColorArr = {new Color(255,0,0),new Color(255,255,255),new Color(0,0,255)};
     JButton button = new JButton("Swing Button!");//want to put it into go-method, find how to replace button into this.caller
     //for access to button from actionPerformer-method
     public void go (String title) {
+
         JFrame frame = new JFrame(title);
         button.addActionListener(this);
 
@@ -32,6 +35,12 @@ public class ButtonEventText implements ActionListener{
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(1400, 700);
         frame.setVisible(true);
+
+        // timer = new Timer(10000, new ActionListener() {//make timeout
+        //     public void actionPerformed(ActionEvent evt) {
+                
+        //     }
+        // });
     }
     public void actionPerformed(ActionEvent event) {
         label.setText(leftLabel + ++numClicks);
