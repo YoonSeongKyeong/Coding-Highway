@@ -15,7 +15,7 @@ public class ButtonEventText implements ActionListener{
     private int buttonLocationX;
     private int buttonLocationY;
     private JLabel label = new JLabel(leftLabel + "0  ");
-    private Timer timer;
+    // private Timer timer;
 
     Color[] labelColorArr = {new Color(255,0,0),new Color(255,255,255),new Color(0,0,255)};
     JButton button = new JButton("Swing Button!");//want to put it into go-method, find how to replace button into this.caller
