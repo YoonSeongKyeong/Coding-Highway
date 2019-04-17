@@ -2,12 +2,9 @@ package javapractice_helloworld;
 
 import javax.swing.*;
 
-import java.awt.Button;
 import java.awt.Color;
-import java.awt.Frame;
 import java.awt.event.*;
 import java.util.Random;
-import javax.swing.Timer;
 
 public class ButtonGame implements ActionListener{ 
     private static String leftLabel = "Number of button clicks : ";
