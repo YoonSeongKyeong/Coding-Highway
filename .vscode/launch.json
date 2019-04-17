@@ -2,6 +2,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - Ex7Animation",
+            "request": "launch",
+            "mainClass": "javapractice_calculator.Ex7Animation",
+            "projectName": "Coding-Highway_800a2e27"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Calculator",
+            "request": "launch",
+            "mainClass": "javapractice_calculator.Calculator",
+            "projectName": "Coding-Highway_800a2e27"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - ButtonEventText",
             "request": "launch",
             "mainClass": "javapractice_helloworld.ButtonEventText",

@@ -2,9 +2,6 @@ package javapractice_helloworld;
 
 import javax.swing.*;
 
-import java.awt.Button;
-import java.awt.Color;
-import java.awt.Frame;
 import java.awt.event.*;
 
 public class ButtonEventText implements ActionListener{ 
