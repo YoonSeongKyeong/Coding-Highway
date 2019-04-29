@@ -2,6 +2,34 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - OldCalc",
+            "request": "launch",
+            "mainClass": "javapractice_calculator.oldversion.OldCalc",
+            "projectName": "Coding-Highway_800a2e27"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - OldFashionCalculator",
+            "request": "launch",
+            "mainClass": "javapractice_calculator.oldversion.OldFashionCalculator",
+            "projectName": "Coding-Highway_800a2e27"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - CalcV2",
+            "request": "launch",
+            "mainClass": "javapractice_calculator.CalcV2",
+            "projectName": "Coding-Highway_800a2e27"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - ButtonGame",
+            "request": "launch",
+            "mainClass": "javapractice_helloworld.ButtonGame",
+            "projectName": "Coding-Highway_800a2e27"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - Ex7Animation",
             "request": "launch",
             "mainClass": "javapractice_calculator.Ex7Animation",

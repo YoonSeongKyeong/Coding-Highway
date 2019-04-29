@@ -1,9 +1,9 @@
-package javapractice_calculator;
+package javapractice_calculator.oldversion;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class Calculator {
+public class OldCalc{
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("My Calculator");
