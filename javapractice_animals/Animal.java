@@ -3,7 +3,7 @@ package javapractice_animals;
 public abstract class Animal {
     private String picture;//save picture address && this is private instance value
     private String food;//food for animal && this is private instance value
-    protected int hunger;//how hungry it is
+    int hunger;//how hungry it is
     private int[] location;//location now positioning {x, y}
     Animal() {//when make instance with no argument
         picture = "";

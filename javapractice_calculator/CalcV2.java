@@ -7,6 +7,11 @@ import java.awt.event.ActionListener;
 import javapractice_calculator.*;
 
 class CalcV2{
+
+    public static void main(String[] args) {//for convenience, I put the main method on the top of the code
+        CalcV2 calculator = new CalcV2();
+        calculator.initializeGUI();
+    }
     
     String operationString="";
     String macro1String="";
@@ -289,6 +294,7 @@ class CalcV2{
             
             @Override
             public void actionPerformed(ActionEvent e) {
+                operationString = textInterface.getText();//for providing copy and paste or typing environment
                 String result = operationString + " = ";
                 boolean noError = logic.checker(operationString);
                 if(noError) {
@@ -333,8 +339,4 @@ class CalcV2{
         /**set visible**/
     }
 
-    public static void main(String[] args) {
-        CalcV2 calculator = new CalcV2();
-        calculator.initializeGUI();
-    }
 }
