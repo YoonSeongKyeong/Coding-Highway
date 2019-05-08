@@ -33,7 +33,7 @@ public class Logic {
 
     public boolean isNum(String str) {
         if(str.equals("(")||str.equals(")")||str.equals("/")||
-        str.equals("*")||str.equals("-")||str.equals("+")) {
+        str.equals("*")||str.equals("-")||str.equals("+")||str.equals("^")) {
             return false;
         }
         else {
@@ -42,7 +42,7 @@ public class Logic {
     }
 
     public boolean isNegativeCondition(String pre) {
-        if(pre.equals("(")||pre.equals("+")||pre.equals("-")||pre.equals("*")||pre.equals("/")||pre.equals("")) {
+        if(pre.equals("(")||pre.equals("+")||pre.equals("-")||pre.equals("*")||pre.equals("/")||pre.equals("^")||pre.equals("")) {
             return true;
         }
         return false;
@@ -94,7 +94,10 @@ public class Logic {
     }
 
     public int precOf(String op) {
-        if(op.equals("*")||op.equals("/")) {
+        if(op.equals("^")) {
+            return 3;
+        }
+        else if(op.equals("*")||op.equals("/")) {
             return 2;
         }
         else if(op.equals("+")||op.equals("-")) {
@@ -124,6 +127,9 @@ public class Logic {
         }            
         else if (op.equals("/")) {
             return (n1/n2);
+        }
+        else if (op.equals("^")) {
+            return (Math.pow(n1, n2));
         }
         return 0;//error
     }
