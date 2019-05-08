@@ -1,3 +1,5 @@
+![example](./calculator_example.PNG)
+
 # Calculator SPEC
 
 ## you can use operation with  **+  -  *  /  (  )**
@@ -49,4 +51,3 @@
     /* ActionListener For delButton */
 ## If the modularity is necessary (longer code for component) then modulize will be considered for readability
 
-![example](./calculator_example.PNG)
