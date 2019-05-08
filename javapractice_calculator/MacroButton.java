@@ -1,5 +1,7 @@
 package javapractice_calculator;
 
+import java.awt.Color;
+
 class MacroButton extends CalcButton {
 
     private String savedMacro;
@@ -7,6 +9,7 @@ class MacroButton extends CalcButton {
     MacroButton(String text) {
         super("Macro "+text);
         savedMacro="";
+        this.setBackground(Color.LIGHT_GRAY);
     }
 
     public void setMacro(String text) {

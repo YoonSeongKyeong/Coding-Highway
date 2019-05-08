@@ -1,6 +1,8 @@
 package javapractice_calculator;
 
 import javax.swing.*;
+import javax.swing.border.LineBorder;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -70,11 +72,20 @@ class CalcV2{
         /**pane**/
 
         /**textField**/
-        JTextField textInterface = new JTextField("0");//making textField to Interact
-        textInterface.setFont(textInterface.getFont().deriveFont(25.0F));
-        textInterface.setHorizontalAlignment(JLabel.RIGHT);
-        pane.add(textInterface, "North");//add textField to uppermost position of pane
-        textInterface.setPreferredSize(new Dimension(1,80));//set relative height of textField
+        class CalcTextField extends JTextField {
+            private static final long serialVersionUID = -834854597487343492L;
+
+            CalcTextField(String text) {
+                super(text);
+                this.setFont(new Font("Arial", Font.BOLD, 32));
+                this.setHorizontalAlignment(JLabel.RIGHT);
+                this.setPreferredSize(new Dimension(1,80));//set relative height of textField
+                this.setForeground(Color.black);
+                this.setBackground(Color.white);
+                pane.add(this, "North");//add textField to uppermost position of pane
+            }
+        }
+        JTextField textInterface = new CalcTextField("0");//making textField to Interact
         /**textField**/
 
         /**button Container**/
@@ -223,6 +234,8 @@ class CalcV2{
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                macroButtons[2].setBorder(new LineBorder(Color.pink, 5));
+                macroButtons[3].setBorder(new LineBorder(Color.white, 3));
                 isMacroSaveMode=true;
             }
         });
@@ -236,6 +249,8 @@ class CalcV2{
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                macroButtons[2].setBorder(new LineBorder(Color.white, 3));
+                macroButtons[3].setBorder(new LineBorder(Color.pink, 5));
                 isMacroSaveMode=false;
             }
         });
@@ -278,12 +293,14 @@ class CalcV2{
         /**Result Dialogue**/
 
         JDialog resultDialog = new JDialog(frame, "Result History");
-        resultDialog.setBounds(850, 0, 700, 800);
+        resultDialog.setBounds(800, 0, 720, 800);
 
         /**Result Panel**/
         JPanel resultPanel = new JPanel();
         resultDialog.add(resultPanel);
         resultPanel.setLayout(new BoxLayout(resultPanel, BoxLayout.Y_AXIS));
+        resultPanel.setBackground(Color.BLACK);
+        resultPanel.add(new resultLabel("===============RESULT==============="));
         /**Result Panel**/
 
         /**Result Dialogue**/

@@ -19,3 +19,32 @@
 
 # you can now use ^ (exponent operation) -> You can calculate t/((1-(v/c)^2)^(1/2))  :  equation for time expansion
 # Also you can determine the standard deviation!
+
+# inner class can be made for modular structure 
+    class DelButton extends OperatorButton implements ActionListener {
+        private static final long serialVersionUID = -6856053687074544675L;
+
+        DelButton(String text) {
+            super(text);
+            this.addActionListener(this);
+        }
+        /* ActionListener For delButton */ 
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                deleteTerm();
+                textInterface.setText(operationString);
+            }
+        /* ActionListener For delButton */
+    }
+## But this modular structure is far more longer and complex to read than usual code
+    /* ActionListener For delButton */
+    delButton.addActionListener(new ActionListener(){
+    
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            deleteTerm();
+            textInterface.setText(operationString);
+        }
+    });
+    /* ActionListener For delButton */
+## If the modularity is necessary (longer code for component) then modulize will be considered for readability
