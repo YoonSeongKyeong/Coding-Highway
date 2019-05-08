@@ -249,16 +249,17 @@ class CalcV2{
 
         /**east Container**/
         Container eastContainer= new Container();
-        eastContainer.setLayout( new GridLayout(4,0));
+        eastContainer.setLayout( new GridLayout(5,0));
         buttonContainer.add(eastContainer, "East");//add eastContainer to east position of buttonContainer
 
-        CalcButton [] divMultSubAddButtons = new CalcButton[4];//creating divide,multiply,subtract,add buttons
+        CalcButton [] divMultSubAddButtons = new CalcButton[5];//creating divide,multiply,subtract,add buttons
         divMultSubAddButtons[0] = new OperatorButton("/");
         divMultSubAddButtons[1] = new OperatorButton("*");
         divMultSubAddButtons[2] = new OperatorButton("-");
         divMultSubAddButtons[3] = new OperatorButton("+");
+        divMultSubAddButtons[4] = new OperatorButton("^");
 
-        for(int i=0; i<4; i++) {
+        for(int i=0; i<5; i++) {
 
             /* ActionListener For divMultSubAddButtons */
             idAddingButtonCollector[numOfCollectedButton++] = divMultSubAddButtons[i];//collected to idAddingButtonCollector
@@ -270,6 +271,7 @@ class CalcV2{
         eastContainer.add(divMultSubAddButtons[1]);
         eastContainer.add(divMultSubAddButtons[2]);
         eastContainer.add(divMultSubAddButtons[3]);
+        eastContainer.add(divMultSubAddButtons[4]);
         eastContainer.setPreferredSize(new Dimension(130,1));//set relative size of eastContainer
         /**east Container**/
         

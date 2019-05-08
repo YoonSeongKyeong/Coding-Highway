@@ -16,3 +16,6 @@
 >## all specific types like { MacroModeSwitch, MacroButton, NumButton, ParenthesisButton, SpecialOperand } has own specific description.
 >## Second is Polymorphism, Even though there are so many classes, Structuring by Common protocol is done with **idAddingButtonCollector**, you can see how efficient it is to use one common actionListener to Handle ordinary buttons.
 >## **Using Get/Set method, Object Oriented Design gave me Micro Control for each Components like font-size, while Handling Most common Features with only a short code. So it is Far more easy to revise and add more Spec!**
+
+# you can now use ^ (exponent operation) -> You can calculate t/((1-(v/c)^2)^(1/2))  :  equation for time expansion
+# Also you can determine the standard deviation!
