@@ -1,5 +1,9 @@
 package javapractice_animals;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList; // import the ArrayList class
 //메인함수 순서 설명
 //1. 각자의 서브클래스 instance들을 Animal Array에 담아서 한번에 컨트롤(polymorphism)
@@ -9,9 +13,10 @@ import java.util.ArrayList; // import the ArrayList class
 //5. Animal Array에서 Pet만 따로 뽑아내고 싶을 때 사용하는 메소드 소개(extraction)
 //6. Pet list에 담아서 Pet의 서브클래스들을 한번에 컨트롤(polymorphism again)
 
+public class Launcher implements Serializable{
+    private static final long serialVersionUID = 1L;
 
-public class Launcher {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         System.out.println("making Animal reference for contain sub-animal instances");
         System.out.println("Controling all different classes at once is the power of Polymorphism!!");
         Animal [] animals = new Animal[6];  //making Animal reference for contain sub-animal instances
@@ -107,6 +112,16 @@ public class Launcher {
             owner.givemeal(petEle);
             System.out.println("---------------------------------");
         }     
+
+
+        // This is Test for File I/O and Serialization
+        Launcher mine = new Launcher();
+        ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("./pet.ser"));
+        os.writeObject(mine);
+        os.close();
     }
+    transient Cat transientCat = new Cat();
+    Dog serDog = new Dog();
+    // Cat nonSerCat = new Cat();//Exception뜸
 }
 

@@ -1,6 +1,9 @@
 package javapractice_animals;
+import java.io.Serializable;
 
-public class Dog extends Canine implements Pet {
+public class Dog extends Canine implements Pet, Serializable {
+    private static final long serialVersionUID = 1L;
+
     @Override
     public void makeNoise() {
         System.out.println("(Dog noise)WRafWraff");
