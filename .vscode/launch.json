@@ -2,6 +2,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - LostUpdate",
+            "request": "launch",
+            "mainClass": "javapractice_server.LostUpdate",
+            "projectName": "Coding-Highway_800a2e27"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - MyRunnable",
+            "request": "launch",
+            "mainClass": "javapractice_server.MyRunnable",
+            "projectName": "Coding-Highway_800a2e27"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - LauncherForWrite",
             "request": "launch",
             "mainClass": "javapractice_server.LauncherForWrite",
