@@ -1,4 +1,5 @@
 # 이 프로그램은 채팅을 이용한 마피아 게임입니다. (2019/06/07 에 시작)
+## 이 프로그램의 코드는 [head first java](https://www.amazon.com/Head-First-Java-Kathy-Sierra/dp/0596009208) 의 일부 코드를 사용했습니다.  
 
 ## 1번 목표 : 채팅 구현하기 - 각 플레이어의 id와 함께 구현
 
