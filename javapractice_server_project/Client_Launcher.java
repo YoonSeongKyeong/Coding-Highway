@@ -129,7 +129,6 @@ public class Client_Launcher {
             String message;
             try {
                 while ((message = reader.readLine()) != null) {
-                    System.out.println(message); 
                     chatting_window.append(message + "\n"); 
                 }  
             } catch(Exception ex) {
