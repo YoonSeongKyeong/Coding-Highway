@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Server_Launcher {
 
     public static void main(String[] args) {
-        
+        go();
     }
 
     ArrayList<PrintWriter> clientOutputStreams;//client들의 outputstream들을 모아서 보관하는 ArrayList
