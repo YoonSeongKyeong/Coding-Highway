@@ -48,7 +48,7 @@ public class Server_Launcher {
                 Socket clientSocket = serverSock.accept();//클라이언트의 연결요청을 받는다.
                 PrintWriter writer = new PrintWriter(clientSocket.getOutputStream());//해당 클라이언트에 쓸 수 있는 writer
                 clientOutputStreams.add(writer);//writer를 ArrayList에 넣는다.
-
+                number_of_connections++;
                 Thread t = new Thread(new Client_Reciever(clientSocket));//해당 클라이언트와 통신하는 thread를 생성한다.
                 t.start();
             }
