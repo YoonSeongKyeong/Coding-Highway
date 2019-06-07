@@ -160,7 +160,7 @@ public class Client_Launcher {
 
     public void make_Connection() {
         try {
-            sock = new Socket("127.0.0.1", 9999);// 서버 ip, 소켓 번호를 입력해서 서버와 연결한다.
+            sock = new Socket("3.89.182.207", 9999);// 서버 ip, 소켓 번호를 입력해서 서버와 연결한다.
             InputStreamReader streamReader = new InputStreamReader(sock.getInputStream());//InputStreamReader와 BufferedReader 사이의 bridge역할
             reader = new BufferedReader(streamReader);//서버에서 읽어오는 역할
             writer = new PrintWriter(sock.getOutputStream());//서버에 입력하는역할
