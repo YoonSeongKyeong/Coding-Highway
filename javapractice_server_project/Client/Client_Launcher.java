@@ -77,6 +77,14 @@ public class Client_Launcher {
                 }
            }
         }
+        @Override
+        public void keyReleased(KeyEvent e) {
+
+        }
+        @Override
+        public void keyTyped(KeyEvent e) {
+            
+        }
 
     }
 
