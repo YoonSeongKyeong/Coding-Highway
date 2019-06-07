@@ -36,11 +36,10 @@ public class Client_Launcher {
     // (0): [게임 시작 전+채팅], (1): (낮) [채팅+투표], (2): (밤, 시민) [] (3): (밤, 마피아) [마피아
     // 채팅+마피아 투표]
     // (4): (밤, 경찰) [경찰 투표], (5): (밤, 의사) [의사 투표], (6): (죽은 사람 or 관전) []
-    String []names = new String[8];// 8개의 id를 array에 저장해서 관리한다.
     int myId;// 내 id의 index 번호를 저장
     int myJob;// 내 직업의 번호를 저장 (2): [시민], (3): [마피아], (4): [경찰], (5): [의사], (6): [죽은 사람 or 관전]
     NameButton []nameButtons = new NameButton[8];// 8개의 nameButton을 array에 저장해서 관리한다.
-    boolean isVotable;// 버튼이 각 턴마다 한번만 동작해야 하므로 투표 가능한지 여부를 관리한다.
+    boolean isVotable=true;// 버튼이 각 턴마다 한번만 동작해야 하므로 투표 가능한지 여부를 관리한다.
 
     /*** inner class에서 접근해야 하는 object들은 여기에서 instance variable로 선언해서 관리한다. ***/
 
