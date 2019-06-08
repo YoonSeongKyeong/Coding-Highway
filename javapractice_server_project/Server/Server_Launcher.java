@@ -32,8 +32,8 @@ public class Server_Launcher {
     int numOfReady = 0;// 이름을 내고 ready 상태인 사람의 수(맨 처음 시작하는 조건)
     int alive = 8;// 살아있는 사람 수
     int mafiaNum = 3;// 마피아 수
-    int[] poles = new int[8];// 시민투표나 마피아 투표시에 사용하는 array
-    int numOfPoles = 0;// 현재까지 투표 갯수
+    int[] polls = new int[8];// 시민투표나 마피아 투표시에 사용하는 array
+    int numOfPolls = 0;// 현재까지 투표 갯수
     String[] jobNames = { // 경찰에게 직업을 알려줘야 해서 만들었다.
             "0번 인덱스", "1번 인덱스", "시민", "마피아", "경찰", "의사" };
     int victim_index;// 마피아에게 지목된 사람의 index
@@ -96,7 +96,7 @@ public class Server_Launcher {
                             for (int i = 0; i < numOfReady; i++) {// 다 오지 않아도 일반 채팅이 돌아가야 한다.
                                 try {
                                 PrintWriter writer = clientOutputStreams[i];
-                                writer.println("c/" +"\"" +names[index]+"\""+ trans.recieved_contents);
+                                writer.println("c/" +"\"" +names[index]+"\": "+ trans.recieved_contents);
                                 writer.flush();
                                 } catch (Exception ex) {
                                     ex.printStackTrace();
@@ -106,9 +106,11 @@ public class Server_Launcher {
                         break;
                     case 'm':// 클라이언트에서 일반 투표를 보냄 (synchronized됨)
                         synchronized (this) {
-                            poles[Integer.parseInt(trans.recieved_contents)]++;
-                            numOfPoles++;
+                            polls[Integer.parseInt(trans.recieved_contents)]++;
+                            numOfPolls++;
                         }
+                        PrintWriter normal_Poll_Announcer = clientOutputStreams[index];
+                        normal_Poll_Announcer.println("d/" + "당신의 투표가 제출되었습니다." );// " d / 설명 " 순이다.
                         break;
                     case 'n':// 클라이언트에서 마피아 채팅을 보냄
                         try {
@@ -117,7 +119,7 @@ public class Server_Launcher {
                                     continue;
                                 }
                                 PrintWriter writer = clientOutputStreams[i];
-                                writer.println("i/" +"\"" +names[index]+"\""+ trans.recieved_contents);
+                                writer.println("i/" +"\"" +names[index]+"\": "+ trans.recieved_contents);
                                 writer.flush();
                             }
                         } catch (Exception ex) {
@@ -126,11 +128,15 @@ public class Server_Launcher {
                         break;
                     case 'o':// 클라이언트에서 마피아 투표를 보냄 (synchronized됨)
                         synchronized (this) {
-                            poles[Integer.parseInt(trans.recieved_contents)]++;
-                            numOfPoles++;
+                            polls[Integer.parseInt(trans.recieved_contents)]++;
+                            numOfPolls++;
                         }
+                        PrintWriter mafia_Poll_Announcer = clientOutputStreams[index];
+                        mafia_Poll_Announcer.println("d/" + "당신의 투표가 제출되었습니다." );// " d / 설명 " 순이다.
                         break;
                     case 'p':// 클라이언트에서 경찰 투표를 보냄
+                        PrintWriter police_Poll_Announcer = clientOutputStreams[index];
+                        police_Poll_Announcer.println("d/" + "당신의 투표가 제출되었습니다." );// " d / 설명 " 순이다.
                         clientOutputStreams[index].println("d/" + names[Integer.parseInt(trans.recieved_contents)]
                                 + "의 직업은 " + jobNames[Integer.parseInt(trans.recieved_contents)] + " 입니다.");
                         clientOutputStreams[index].flush();// 해당 경찰에게만 알려준다.
@@ -138,6 +144,8 @@ public class Server_Launcher {
                         jump_to_phase(5);// 의사의 phase로 넘어간다.
                         break;
                     case 'q':// 클라이언트에서 의사 투표를 보냄
+                        PrintWriter doctor_Poll_Announcer = clientOutputStreams[index];
+                        doctor_Poll_Announcer.println("d/" + "당신의 투표가 제출되었습니다." );// " d / 설명 " 순이다.
                         heal_index = Integer.parseInt(trans.recieved_contents);
                         finish_phase(5);// 의사의 phase를 마친다.
                         break;
@@ -148,7 +156,7 @@ public class Server_Launcher {
                                     continue;
                                 }
                                 PrintWriter writer = clientOutputStreams[i];
-                                writer.println("j/" +"\"" +names[index]+"\""+ trans.recieved_contents);
+                                writer.println("j/" +"\"" +names[index]+"\": "+ trans.recieved_contents);
                                 writer.flush();
                             }
                         } catch (Exception ex) {
@@ -212,14 +220,15 @@ public class Server_Launcher {
             case 1:// 낮의 투표를 set한다. (투표를 초기화하고 공지로 "낮이 되었습니다. 시민들은 마피아로 의심되는 사람을 투표해주세요." 라는 문구
             // 프린트)
                 pole_fail=false;//투표 실패 여부를 초기화한다.
-                numOfPoles=0;//투표자 수를 초기화한다.
+                numOfPolls=0;//투표자 수를 초기화한다.
                 for(int i=0 ; i<8 ; i++) {
-                    poles[i]=0;//투표를 모두 0표로 초기화한다.
+                    polls[i]=0;//투표를 모두 0표로 초기화한다.
                 }
                 for (int i = 0; i < 8 ; i++) {// 공지로 "낮이 되었습니다. 시민들은 마피아로 의심되는 사람을 투표해주세요."를 프린트
                     PrintWriter writer = clientOutputStreams[i];
                     writer.println("h/" + "낮이 되었습니다. 시민들은 마피아로 의심되는 사람을 투표해주세요.");// " h / 공지 " 순이다.
                     writer.println("f/1");// 낮으로 클라이언트의 flag를 바꿔준다. " f / flag " 순이다.
+                    writer.println("d/" + "당신의 투표가 활성화되었습니다." );// " d / 설명 " 순이다.
                     writer.println("s/.");// 클라이언트의 투표를 활성화한다. " s / 아무거나 " 순이다.
                     writer.flush();
                 }
@@ -234,14 +243,15 @@ public class Server_Launcher {
                 break;
             case 3:// 마피아 투표를 set한다. (투표를 초기화하고 "마피아는 죽일 사람을 투표해주세요" 라는 문구 프린트)
                 pole_fail=false;//투표 실패 여부를 초기화한다.
-                numOfPoles=0;//투표자 수를 초기화한다.
+                numOfPolls=0;//투표자 수를 초기화한다.
                 for(int i=0 ; i<8 ; i++) {
-                    poles[i]=0;//투표를 모두 0표로 초기화한다.
+                    polls[i]=0;//투표를 모두 0표로 초기화한다.
                 }
                 for (int i = 0; i < 8 ; i++) {// 공지로 "마피아는 죽일 사람을 투표해주세요"를 프린트
                     PrintWriter writer = clientOutputStreams[i];
                     writer.println("h/" + "마피아는 죽일 사람을 투표해주세요");// " h / 공지 " 순이다.
                     if(jobs[i] == 3) {// 마피아인 경우 투표를 활성화한다.
+                        writer.println("d/" + "당신의 투표가 활성화되었습니다." );// " d / 설명 " 순이다.
                         writer.println("s/.");// " s / 아무거나 " 순이다.
                     }
                     writer.flush();
@@ -254,14 +264,15 @@ public class Server_Launcher {
                     PrintWriter writer = clientOutputStreams[i];
                     writer.println("h/" + "경찰은 직업을 확인할 사람을 투표해주세요." );// " h / 공지 " 순이다.
                     if(jobs[i]==4) {//현재 클라이언트가 경찰이면
+                        writer.println("d/" + "당신의 투표가 활성화되었습니다." );// " d / 설명 " 순이다.
                         writer.println("s/.");// 투표를 활성화한다. " s / 아무거나 " 순이다.
                         numOfPolAlive++;
                     }
                     writer.flush();
-                    if(numOfPolAlive==0) {// 이미 경찰이 죽었으면
-                        finish_phase(4);// 경찰 phase를 마친다.
-                        jump_to_phase(5);// 의사 phase로 들어간다.
-                    }
+                }
+                if(numOfPolAlive==0) {// 이미 경찰이 죽었으면
+                    finish_phase(4);// 경찰 phase를 마친다.
+                    jump_to_phase(5);// 의사 phase로 들어간다.
                 }
                 break;
             case 5:// 의사의 phase로 넘어간다.
@@ -271,13 +282,14 @@ public class Server_Launcher {
                     PrintWriter writer = clientOutputStreams[i];
                     writer.println("h/" + "의사는 살릴 사람을 투표해주세요." );// " h / 공지 " 순이다.
                     if(jobs[i]==5) {//현재 클라이언트가 의사면
+                        writer.println("d/" + "당신의 투표가 활성화되었습니다." );// " d / 설명 " 순이다.
                         writer.println("s/.");// 투표를 활성화한다. " s / 아무거나 " 순이다.
                         numOfDocAlive++;
                     }
                     writer.flush();
-                    if(numOfDocAlive==0) {// 이미 의사가 죽었으면
-                        finish_phase(5);// 의사 phase를 마친다.
-                    }
+                }
+                if(numOfDocAlive==0) {// 이미 의사가 죽었으면
+                    finish_phase(5);// 의사 phase를 마친다.
                 }
                 break;
         
@@ -298,24 +310,24 @@ public class Server_Launcher {
                 break;
             case 1:// 낮의 투표를 close한다. (투표 결과를 확인하고 pole_fail이 아니면 선택된 사람을 유령으로 만든다.(flag를 6으로) 게임
             // 종료 조건을 확인한다.)
-                while(numOfPoles<alive) {//살아있는 사람이 모두 투표를 할 때까지 기다린다.
+                while(numOfPolls<alive) {//살아있는 사람이 모두 투표를 할 때까지 기다린다.
                     try {
                         Thread.sleep(3000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                 }
-                int max_Poles=-1;//최대 득표자의 표수
+                int max_Polls=-1;//최대 득표자의 표수
                 int max_Pole_index=-1;//최대 득표자의 index
                 int max_Pole_number=0;//최대 득표자 수, 2명 이상이면 pole fail을 만든다.
                 for(int i=0 ; i<8 ; i++) {//최대 득표자를 찾는다.
-                    if(poles[i]>max_Poles) {
-                        max_Poles = poles[i];
+                    if(polls[i]>max_Polls) {
+                        max_Polls = polls[i];
                         max_Pole_index = i;
                     }
                 }
                 for(int i=0 ; i<8 ; i++) {//최대 득표자 수를 구한다.
-                    if(poles[i]==max_Poles) {
+                    if(polls[i]==max_Polls) {
                         max_Pole_number++;
                     }
                 }
@@ -366,32 +378,32 @@ public class Server_Launcher {
                 
                 break;
             case 3:// 마피아 투표를 close한다. (투표 결과를 확인하고 pole_fail이 아니면 선택된 사람을 victim_index에 넣는다.)
-                while(numOfPoles<mafiaNum) {//마피아가 모두 투표를 할 때까지 기다린다.
+                while(numOfPolls<mafiaNum) {//마피아가 모두 투표를 할 때까지 기다린다.
                     try {
                         Thread.sleep(3000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                 }
-                int mafia_Max_Poles=-1;//마피아 투표 최대 득표자의 표수
-                int mafia_Max_Pole_index=-1;//마피아 투표 최대 득표자의 index
-                int mafia_Max_Pole_number=0;//마피아 투표 최대 득표자 수, 2명 이상이면 pole fail을 만든다.
+                int mafia_Max_Polls=-1;//마피아 투표 최대 득표자의 표수
+                int mafia_Max_Poll_index=-1;//마피아 투표 최대 득표자의 index
+                int mafia_Max_Poll_number=0;//마피아 투표 최대 득표자 수, 2명 이상이면 pole fail을 만든다.
                 for(int i=0 ; i<8 ; i++) {//최대 득표자를 찾는다.
-                    if(poles[i]>mafia_Max_Poles) {
-                        max_Poles = poles[i];
+                    if(polls[i]>mafia_Max_Polls) {
+                        max_Polls = polls[i];
                         max_Pole_index = i;
                     }
                 }
                 for(int i=0 ; i<8 ; i++) {//최대 득표자 수를 구한다.
-                    if(poles[i]==mafia_Max_Poles) {
-                        mafia_Max_Pole_number++;
+                    if(polls[i]==mafia_Max_Polls) {
+                        mafia_Max_Poll_number++;
                     }
                 }
-                if(mafia_Max_Pole_number>1) {//두명 이상이면 pole fail을 표시한다.
+                if(mafia_Max_Poll_number>1) {//두명 이상이면 pole fail을 표시한다.
                     pole_fail=true;
                 }
-                else if(mafia_Max_Pole_number==1) {//한명으로 희생자가 결정되면 victim_index에 업데이트한다. 
-                    victim_index = mafia_Max_Pole_index;
+                else if(mafia_Max_Poll_number==1) {//한명으로 희생자가 결정되면 victim_index에 업데이트한다. 
+                    victim_index = mafia_Max_Poll_index;
                 }
                 for (int i = 0; i < 8 ; i++) {// 공지로 "마피아가 투표를 마쳤습니다." 라고 전송한다.
                         PrintWriter writer = clientOutputStreams[i];
@@ -502,7 +514,9 @@ public class Server_Launcher {
         try {
             for (int i = 0; i < 8; i++) {// 모든 사람에게 아이디를 전달한다. phase -1이 완료되었다. index와 아이디 순으로 보낸다.
                 PrintWriter writer = clientOutputStreams[i];
-                writer.println("a/" + i + names[i]);
+                for(int j = 0 ; j < 8 ; j++) {
+                    writer.println("a/" + j + names[j]);
+                }
                 writer.flush();
             }
         } catch (Exception ex) {
