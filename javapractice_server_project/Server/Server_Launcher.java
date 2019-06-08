@@ -85,6 +85,12 @@ public class Server_Launcher {
                         synchronized (this) {//레디한 사람의 수를 늘린다. (synchronized됨)
                             numOfReady++;
                         }
+                        for (int i = 0; i < 8 ; i++) {// 공지로 "현재 아이디 입력한 사람 : "+ numOfReady +"/8"를 프린트
+                            PrintWriter writer = clientOutputStreams[i];
+                            writer.println("h/" + "현재 아이디 입력한 사람 : "+ numOfReady +"/8");// " h / 공지 " 순이다.
+                            
+                            writer.flush();
+                        }
                         break;
                     case 'l':// 클라이언트에서 일반 채팅을 보냄
                         try {
