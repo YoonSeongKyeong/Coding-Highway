@@ -7,7 +7,13 @@ import java.util.Random;
 
 public class Server_Launcher {
 
-    public static void main(String[] args) {
+    /**
+	 *
+	 */
+	
+	private static final String 당신의_투표가_활성화되었습니다 = "당신의 투표가 활성화되었습니다.";
+
+	public static void main(String[] args) {
         new Server_Launcher().go();
     }
 
@@ -220,12 +226,22 @@ public class Server_Launcher {
                 for(int i=0 ; i<8 ; i++) {
                     polls[i]=0;//투표를 모두 0표로 초기화한다.
                 }
+                // 낮을 setting한다. 유령이 아닌 각 클라이언트의 flag를 낮의 flag로 만든다.
+                for (int i = 0; i < 8 ; i++) {
+                    if(jobs[i]==6) {//유령은 넘어간다.
+                        continue;
+                    }
+                    PrintWriter writer = clientOutputStreams[i];
+                    writer.println("f/1");// 낮의 flag로 setting한다.
+                    writer.flush();
+                }
                 for (int i = 0; i < 8 ; i++) {// 공지로 "낮이 되었습니다. 시민들은 마피아로 의심되는 사람을 투표해주세요."를 프린트
                     PrintWriter writer = clientOutputStreams[i];
                     writer.println("h/" + "낮이 되었습니다. 시민들은 마피아로 의심되는 사람을 투표해주세요.");// " h / 공지 " 순이다.
-                    writer.println("f/1");// 낮으로 클라이언트의 flag를 바꿔준다. " f / flag " 순이다.
-                    writer.println("d/" + "당신의 투표가 활성화되었습니다." );// " d / 설명 " 순이다.
-                    writer.println("s/.");// 클라이언트의 투표를 활성화한다. " s / 아무거나 " 순이다.
+                    if(jobs[i]!=6) {// 유령이 아니라면(시민이면)
+                        writer.println("d/" + "당신의 시민 투표가_활성화되었습니다" );// " d / 설명 " 순이다.
+                        writer.println("s/.");// 클라이언트의 투표를 활성화한다. " s / 아무거나 " 순이다.
+                    }
                     writer.flush();
                 }
                 break;
@@ -248,7 +264,7 @@ public class Server_Launcher {
                     PrintWriter writer = clientOutputStreams[i];
                     writer.println("h/" + "마피아는 죽일 사람을 투표해주세요");// " h / 공지 " 순이다.
                     if(jobs[i] == 3) {// 마피아인 경우 투표를 활성화한다.
-                        writer.println("d/" + "당신의 투표가 활성화되었습니다." );// " d / 설명 " 순이다.
+                        writer.println("d/" + "당신의 마피아 투표가 활성화되었습니다" );// " d / 설명 " 순이다.
                         writer.println("s/.");// " s / 아무거나 " 순이다.
                     }
                     writer.flush();
@@ -261,7 +277,7 @@ public class Server_Launcher {
                     PrintWriter writer = clientOutputStreams[i];
                     writer.println("h/" + "경찰은 직업을 확인할 사람을 투표해주세요." );// " h / 공지 " 순이다.
                     if(jobs[i]==4) {//현재 클라이언트가 경찰이면
-                        writer.println("d/" + "당신의 투표가 활성화되었습니다." );// " d / 설명 " 순이다.
+                        writer.println("d/" + "당신의 경찰 투표가 활성화되었습니다" );// " d / 설명 " 순이다.
                         writer.println("s/.");// 투표를 활성화한다. " s / 아무거나 " 순이다.
                         numOfPolAlive++;
                     }
@@ -279,7 +295,7 @@ public class Server_Launcher {
                     PrintWriter writer = clientOutputStreams[i];
                     writer.println("h/" + "의사는 살릴 사람을 투표해주세요." );// " h / 공지 " 순이다.
                     if(jobs[i]==5) {//현재 클라이언트가 의사면
-                        writer.println("d/" + "당신의 투표가 활성화되었습니다." );// " d / 설명 " 순이다.
+                        writer.println("d/" + "당신의 의사 투표가 활성화되었습니다" );// " d / 설명 " 순이다.
                         writer.println("s/.");// 투표를 활성화한다. " s / 아무거나 " 순이다.
                         numOfDocAlive++;
                     }
