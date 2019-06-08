@@ -6,6 +6,8 @@
 - 접속자가 8명이 넘었을 때 새로운 방을 만들거나 하는 handling
 - 중간에 누군가 나갔을 때의 handling 
 
+## 참고 : 현재는 test용으로 client의 socket 연결이 localhost로 잡혀있어서 실제 서버에 돌릴 때는 해당 서버의 ip를 넣어야 한다. (make connection method의 try 첫번째 줄)
+
 ### [실행 모습]
 
 ![](게임화면.PNG)
