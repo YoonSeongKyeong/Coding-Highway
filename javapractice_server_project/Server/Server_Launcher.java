@@ -469,9 +469,6 @@ public class Server_Launcher {
                 PrintWriter writer = new PrintWriter(clientSocket.getOutputStream());// 해당 클라이언트에 쓸 수 있는 writer
                 clientOutputStreams[number_of_connections] = writer;// writer를 해당 인덱스의 자리에 넣는다.
                 /** initialize **/
-                for (int i = 0; i < number_of_connections; i++) {// 지금까지의 아이디 정보를 클라이언트에게 전송한다.
-                    writer.println("a/" + i + names[i]);// " a / 인덱스 아이디 " 순이다.
-                }
                 writer.println("b/" + number_of_connections);// 클라이언트의 index 정보를 전송한다.
                 writer.println("d/아이디를 입력해주세요.");// 아이디를 입력해달라고 클라이언트에게 요청
                 writer.flush();

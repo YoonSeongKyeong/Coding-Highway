@@ -288,7 +288,7 @@ public class Client_Launcher {
     public class IncomingReader implements Runnable {// Runnable
 
         public void run() {
-            String message;
+            String message="";
             TransReciever trans = new TransReciever();
             try {
                 while ((message = reader.readLine()) != null) {
