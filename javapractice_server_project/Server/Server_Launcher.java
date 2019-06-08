@@ -389,7 +389,7 @@ public class Server_Launcher {
                 for(int i=0 ; i<8 ; i++) {//최대 득표자를 찾는다.
                     if(polls[i]>mafia_Max_Polls) {
                         mafia_Max_Polls = polls[i];
-                        mafia_Max_Pole_index = i;
+                        mafia_Max_Poll_index = i;
                     }
                 }
                 for(int i=0 ; i<8 ; i++) {//최대 득표자 수를 구한다.
