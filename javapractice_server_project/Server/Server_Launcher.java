@@ -109,8 +109,7 @@ public class Server_Launcher {
                             polls[Integer.parseInt(trans.recieved_contents)]++;
                             numOfPolls++;
                         }
-                        PrintWriter normal_Poll_Announcer = clientOutputStreams[index];
-                        normal_Poll_Announcer.println("d/" + "당신의 투표가 제출되었습니다." );// " d / 설명 " 순이다.
+                        clientOutputStreams[index].println("d/" + "당신의 시민 투표가 제출되었습니다." );// " d / 설명 " 순이다.
                         break;
                     case 'n':// 클라이언트에서 마피아 채팅을 보냄
                         try {
@@ -131,12 +130,10 @@ public class Server_Launcher {
                             polls[Integer.parseInt(trans.recieved_contents)]++;
                             numOfPolls++;
                         }
-                        PrintWriter mafia_Poll_Announcer = clientOutputStreams[index];
-                        mafia_Poll_Announcer.println("d/" + "당신의 투표가 제출되었습니다." );// " d / 설명 " 순이다.
+                        clientOutputStreams[index].println("d/" + "당신의 마피아 투표가 제출되었습니다." );// " d / 설명 " 순이다.
                         break;
                     case 'p':// 클라이언트에서 경찰 투표를 보냄
-                        PrintWriter police_Poll_Announcer = clientOutputStreams[index];
-                        police_Poll_Announcer.println("d/" + "당신의 투표가 제출되었습니다." );// " d / 설명 " 순이다.
+                        clientOutputStreams[index].println("d/" + "당신의 경찰 투표가 제출되었습니다." );// " d / 설명 " 순이다.
                         clientOutputStreams[index].println("d/" + names[Integer.parseInt(trans.recieved_contents)]
                                 + "의 직업은 " + jobNames[Integer.parseInt(trans.recieved_contents)] + " 입니다.");
                         clientOutputStreams[index].flush();// 해당 경찰에게만 알려준다.
@@ -144,8 +141,7 @@ public class Server_Launcher {
                         jump_to_phase(5);// 의사의 phase로 넘어간다.
                         break;
                     case 'q':// 클라이언트에서 의사 투표를 보냄
-                        PrintWriter doctor_Poll_Announcer = clientOutputStreams[index];
-                        doctor_Poll_Announcer.println("d/" + "당신의 투표가 제출되었습니다." );// " d / 설명 " 순이다.
+                        clientOutputStreams[index].println("d/" + "당신의 의사 투표가 제출되었습니다." );// " d / 설명 " 순이다.
                         heal_index = Integer.parseInt(trans.recieved_contents);
                         finish_phase(5);// 의사의 phase를 마친다.
                         break;
@@ -244,6 +240,7 @@ public class Server_Launcher {
             case 3:// 마피아 투표를 set한다. (투표를 초기화하고 "마피아는 죽일 사람을 투표해주세요" 라는 문구 프린트)
                 pole_fail=false;//투표 실패 여부를 초기화한다.
                 numOfPolls=0;//투표자 수를 초기화한다.
+                victim_index=-1;//victim index를 초기화한다.
                 for(int i=0 ; i<8 ; i++) {
                     polls[i]=0;//투표를 모두 0표로 초기화한다.
                 }
@@ -349,6 +346,7 @@ public class Server_Launcher {
                     PrintWriter killer = clientOutputStreams[max_Pole_index];
                     killer.println("f/6");//해당 유저의 상태를 유령으로 만든다.
                     killer.println("e/6");//해당 유저의 직업을 유령으로 만든다.
+                    killer.println("d/"+"당신은 죽었습니다. 이제 유령이 되어 유령 채팅만 사용 가능합니다.");//안내 메세지 전달
                     jobs[max_Pole_index]=6;//서버 상에서 직업을 유령으로 세팅한다.
                     for (int i = 0; i < 8 ; i++) {// 공지로 "최대 득표자는 "+user name+" 입니다. 해당 유저는 유령이 됩니다." 라고 전송한다.
                         PrintWriter writer = clientOutputStreams[i];
@@ -390,8 +388,8 @@ public class Server_Launcher {
                 int mafia_Max_Poll_number=0;//마피아 투표 최대 득표자 수, 2명 이상이면 pole fail을 만든다.
                 for(int i=0 ; i<8 ; i++) {//최대 득표자를 찾는다.
                     if(polls[i]>mafia_Max_Polls) {
-                        max_Polls = polls[i];
-                        max_Pole_index = i;
+                        mafia_Max_Polls = polls[i];
+                        mafia_Max_Pole_index = i;
                     }
                 }
                 for(int i=0 ; i<8 ; i++) {//최대 득표자 수를 구한다.
@@ -447,6 +445,7 @@ public class Server_Launcher {
                     PrintWriter killer = clientOutputStreams[victim_index];
                     killer.println("f/6");//해당 유저의 상태를 유령으로 만든다.
                     killer.println("e/6");//해당 유저의 직업을 유령으로 만든다.
+                    killer.println("d/"+"당신은 죽었습니다. 이제 유령이 되어 유령 채팅만 사용 가능합니다.");//안내 메세지 전달
                     jobs[victim_index]=6;//서버 상에서 직업을 유령으로 세팅한다.
                     for (int i = 0; i < 8 ; i++) {// 공지로 "마피아가 고른 사람은 "+user name+" 입니다. 해당 유저는 유령이 됩니다." 라고 전송한다.
                         PrintWriter writer = clientOutputStreams[i];
