@@ -105,10 +105,10 @@ public class Client_Launcher {
                 try {
                     writer.println(form + "/" + text_out.getText());// format된 string을 서버로 전송한다.
                     writer.flush();
-                } catch (Exception ex) {
-                    ex.printStackTrace();
                     text_out.setText("");
                     text_out.requestFocus();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
                 }
             }
         }
@@ -163,10 +163,10 @@ public class Client_Launcher {
             try {
                 writer.println(form + "/" + text_out.getText());// format된 string을 서버로 전송한다.
                 writer.flush();
-            } catch (Exception ex) {
-                ex.printStackTrace();
                 text_out.setText("");
                 text_out.requestFocus();
+            } catch (Exception ex) {
+                ex.printStackTrace();
             }
         }
     }
@@ -229,8 +229,6 @@ public class Client_Launcher {
                 writer.flush();
             } catch (Exception ex) {
                 ex.printStackTrace();
-                text_out.setText("");
-                text_out.requestFocus();
             }
         }
 
