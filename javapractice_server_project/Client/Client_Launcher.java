@@ -350,7 +350,7 @@ public class Client_Launcher {
         text_out = new Chatting_Out();
         SendButton sendButton = new SendButton();
         Names_Panel nPanel = new Names_Panel();
-        // make_Connection();
+        make_Connection();
         panel.add(scroller);
         panel.add(text_out);
         panel.add(sendButton);
