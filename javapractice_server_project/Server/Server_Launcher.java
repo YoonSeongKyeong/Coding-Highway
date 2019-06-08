@@ -7,12 +7,6 @@ import java.util.Random;
 
 public class Server_Launcher {
 
-    /**
-	 *
-	 */
-	
-	private static final String 당신의_투표가_활성화되었습니다 = "당신의 투표가 활성화되었습니다.";
-
 	public static void main(String[] args) {
         new Server_Launcher().go();
     }
