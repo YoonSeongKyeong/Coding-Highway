@@ -73,7 +73,7 @@ public class Server_Launcher {
             }
         }
 
-        public void run() {
+        public void run() {//받아온 메세지를 parse해서 각 상황에 맞게 반응한다.
             String message;
             TransReciever trans = new TransReciever();
             try {

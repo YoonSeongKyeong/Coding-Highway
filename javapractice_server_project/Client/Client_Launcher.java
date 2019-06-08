@@ -268,9 +268,9 @@ public class Client_Launcher {
         }
     }
 
-    public class Names_Panel extends JPanel {
+    public class Names_Panel extends JPanel {// Name Button들을 담고 있는 panel
 
-        private static final long serialVersionUID = 1L;// Name Button들을 담고 있는 panel
+        private static final long serialVersionUID = 1L;
         
         Names_Panel() {
             super();
