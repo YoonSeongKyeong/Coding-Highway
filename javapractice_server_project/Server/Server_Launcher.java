@@ -85,7 +85,7 @@ public class Server_Launcher {
                         synchronized (this) {//레디한 사람의 수를 늘린다. (synchronized됨)
                             numOfReady++;
                         }
-                        for (int i = 0; i < 8 ; i++) {// 공지로 "현재 아이디 입력한 사람 : "+ numOfReady +"/8"를 프린트
+                        for (int i = 0; i < numOfReady ; i++) {// 공지로 "현재 아이디 입력한 사람 : "+ numOfReady +"/8"를 프린트
                             PrintWriter writer = clientOutputStreams[i];
                             writer.println("h/" + "현재 아이디 입력한 사람 : "+ numOfReady +"/8");// " h / 공지 " 순이다.
                             
@@ -93,15 +93,16 @@ public class Server_Launcher {
                         }
                         break;
                     case 'l':// 클라이언트에서 일반 채팅을 보냄
-                        try {
-                            for (int i = 0; i < 8; i++) {
+                            for (int i = 0; i < numOfReady; i++) {// 다 오지 않아도 일반 채팅이 돌아가야 한다.
+                                try {
                                 PrintWriter writer = clientOutputStreams[i];
-                                writer.println("l/" + message);
+                                writer.println("c/" +"\"" +names[index]+"\""+ trans.recieved_contents);
                                 writer.flush();
-                            }
-                        } catch (Exception ex) {
-                            ex.printStackTrace();
-                        }
+                                } catch (Exception ex) {
+                                    ex.printStackTrace();
+                                }
+                            } 
+                            
                         break;
                     case 'm':// 클라이언트에서 일반 투표를 보냄 (synchronized됨)
                         synchronized (this) {
@@ -116,7 +117,7 @@ public class Server_Launcher {
                                     continue;
                                 }
                                 PrintWriter writer = clientOutputStreams[i];
-                                writer.println("i/" + message);
+                                writer.println("i/" +"\"" +names[index]+"\""+ trans.recieved_contents);
                                 writer.flush();
                             }
                         } catch (Exception ex) {
@@ -147,7 +148,7 @@ public class Server_Launcher {
                                     continue;
                                 }
                                 PrintWriter writer = clientOutputStreams[i];
-                                writer.println("j/" + message);
+                                writer.println("j/" +"\"" +names[index]+"\""+ trans.recieved_contents);
                                 writer.flush();
                             }
                         } catch (Exception ex) {
