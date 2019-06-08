@@ -39,7 +39,7 @@ public class Client_Launcher {
     int myId;// 내 id의 index 번호를 저장
     int myJob;// 내 직업의 번호를 저장 (2): [시민], (3): [마피아], (4): [경찰], (5): [의사], (6): [죽은 사람 or 관전]
     NameButton []nameButtons = new NameButton[8];// 8개의 nameButton을 array에 저장해서 관리한다.
-    boolean isVotable=true;// 버튼이 각 턴마다 한번만 동작해야 하므로 투표 가능한지 여부를 관리한다.
+    boolean isVotable=false;// 버튼이 각 턴마다 한번만 동작해야 하므로 투표 가능한지 여부를 관리한다.
 
     /*** inner class에서 접근해야 하는 object들은 여기에서 instance variable로 선언해서 관리한다. ***/
 
@@ -327,6 +327,9 @@ public class Client_Launcher {
                         case 'j'://유령 채팅
                             chatting_window.append("[ 유령 ] "+ trans.recieved_contents +"\n");
                             break;
+                        case 's'://투표 활성화하기
+                            isVotable=true;
+                            break;
                         default://에러인 상황
                             break;
                     }
@@ -377,7 +380,7 @@ public class Client_Launcher {
 // 받는 프로토콜 : (a)<맨 처음 아이디 목록 받아오기 + 새로 등록된 사용자의 아이디 받아오기>, (b)<내 숫자 id 받아오기>,
 // (c)<일반 채팅>, (d)<설명 받아오기>
 // (e)<내 직업 받아오기>, (f)<현재 게임 상태 변경하기>, (g)<죽은 사람 id 받아오기>, (h)<공지 메시지 받아오기>,
-// (i)<마피아 채팅>, (j)<유령 채팅>
+// (i)<마피아 채팅>, (j)<유령 채팅>, (s)<투표 활성화하기>
 // 보내는 프로토콜 : (k)<맨 처음 아이디 입력>, (l)<일반 채팅>, (m)<일반 투표>, (n)<마피아 채팅>, (o)<마피아
 // 투표>, (p)<경찰 투표>, (q)<의사 투표>, (r)<유령 채팅>
 // 서버로 보내는 메시지 형식 : (프로토콜) + "/" + (내용)
