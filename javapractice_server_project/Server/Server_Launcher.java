@@ -110,6 +110,7 @@ public class Server_Launcher {
                             numOfPolls++;
                         }
                         clientOutputStreams[index].println("d/" + "당신의 시민 투표가 제출되었습니다." );// " d / 설명 " 순이다.
+                        clientOutputStreams[index].flush();
                         break;
                     case 'n':// 클라이언트에서 마피아 채팅을 보냄
                         try {
@@ -131,6 +132,7 @@ public class Server_Launcher {
                             numOfPolls++;
                         }
                         clientOutputStreams[index].println("d/" + "당신의 마피아 투표가 제출되었습니다." );// " d / 설명 " 순이다.
+                        clientOutputStreams[index].flush();
                         break;
                     case 'p':// 클라이언트에서 경찰 투표를 보냄
                         clientOutputStreams[index].println("d/" + "당신의 경찰 투표가 제출되었습니다." );// " d / 설명 " 순이다.
@@ -142,6 +144,7 @@ public class Server_Launcher {
                         break;
                     case 'q':// 클라이언트에서 의사 투표를 보냄
                         clientOutputStreams[index].println("d/" + "당신의 의사 투표가 제출되었습니다." );// " d / 설명 " 순이다.
+                        clientOutputStreams[index].flush();
                         heal_index = Integer.parseInt(trans.recieved_contents);
                         finish_phase(5);// 의사의 phase를 마친다.
                         break;
