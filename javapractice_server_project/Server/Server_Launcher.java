@@ -137,7 +137,7 @@ public class Server_Launcher {
                     case 'p':// 클라이언트에서 경찰 투표를 보냄
                         clientOutputStreams[index].println("d/" + "당신의 경찰 투표가 제출되었습니다." );// " d / 설명 " 순이다.
                         clientOutputStreams[index].println("d/" + names[Integer.parseInt(trans.recieved_contents)]
-                                + "의 직업은 " + jobNames[Integer.parseInt(trans.recieved_contents)] + " 입니다.");
+                                + "의 직업은 " + jobNames[jobs[Integer.parseInt(trans.recieved_contents)]] + " 입니다.");
                         clientOutputStreams[index].flush();// 해당 경찰에게만 알려준다.
                         finish_phase(4);// 경찰의 phase를 마친다.
                         jump_to_phase(5);// 의사의 phase로 넘어간다.
